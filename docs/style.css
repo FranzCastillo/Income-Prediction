@@ -1,4 +1,4 @@
-/* EDA Section Styles */
+
 .eda-section {
     background: #fff;
     border-radius: 10px;
@@ -10,20 +10,29 @@
 .eda-section h2, .eda-section h3 {
     color: #2c3e50;
 }
-.eda-section table {
+.eda-table {
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1.5em;
+    background: #fff;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(44,62,80,0.10);
 }
-.eda-section th, .eda-section td {
+.eda-table th, .eda-table td {
     border: 1px solid #ddd;
-    padding: 0.5em 0.8em;
+    padding: 0.7em 1em;
     text-align: left;
 }
-.eda-section tr:nth-child(even) {
+.eda-table th {
+    background: #2c3e50;
+    color: #fff;
+    font-weight: bold;
+}
+.eda-table tr:nth-child(even) {
     background: #f4f8fb;
 }
-.eda-section tr:nth-child(odd) {
+.eda-table tr:nth-child(odd) {
     background: #fff;
 }
 .eda-section ul {
@@ -40,7 +49,7 @@
     .eda-section {
         padding: 1em;
     }
-    .eda-section table, .eda-section th, .eda-section td {
+    .eda-table, .eda-table th, .eda-table td {
         font-size: 0.95em;
     }
 }
