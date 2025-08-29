@@ -1,3 +1,49 @@
+/* EDA Section Styles */
+.eda-section {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    padding: 2em;
+    margin: 2em auto;
+    max-width: 1100px;
+}
+.eda-section h2, .eda-section h3 {
+    color: #2c3e50;
+}
+.eda-section table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+.eda-section th, .eda-section td {
+    border: 1px solid #ddd;
+    padding: 0.5em 0.8em;
+    text-align: left;
+}
+.eda-section tr:nth-child(even) {
+    background: #f4f8fb;
+}
+.eda-section tr:nth-child(odd) {
+    background: #fff;
+}
+.eda-section ul {
+    margin-bottom: 1.5em;
+}
+.eda-section img {
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(44,62,80,0.10);
+}
+@media (max-width: 700px) {
+    .eda-section {
+        padding: 1em;
+    }
+    .eda-section table, .eda-section th, .eda-section td {
+        font-size: 0.95em;
+    }
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
