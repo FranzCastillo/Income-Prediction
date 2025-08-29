@@ -166,7 +166,6 @@ html,body{background:var(--bg);color:var(--fg);}
 .site-footer{background:var(--primary);color:#fff;margin-top:2rem;padding:1.25rem 0}
 .site-footer .container{padding:0 1.25rem}
 
-/* Language visibility */
 .lang-en,.lang-es{display:block}
 [data-lang="en"] .lang-es{display:none}
 [data-lang="es"] .lang-en{display:none}
