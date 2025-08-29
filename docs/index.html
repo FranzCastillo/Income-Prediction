@@ -18,8 +18,85 @@
     </header>
     <main>
         <section>
-            <h2>Welcome</h2>
-            <p>This is the GitHub Pages site for the Income Prediction project. Explore the documentation and results!</p>
+            <h2>Exploratory Data Analysis (EDA)</h2>
+            <h3>Dataset Overview</h3>
+            <ul>
+                <li>Source: <a href="https://archive.ics.uci.edu/dataset/2/adult" target="_blank">UCI Adult Dataset</a></li>
+                <li>Features: age, workclass, fnlwgt, education, education-num, marital-status, occupation, relationship, race, sex, capital-gain, capital-loss, hours-per-week, native-country, income</li>
+            </ul>
+
+            <h3>Sample Data</h3>
+            <table>
+                <tr>
+                    <th>age</th><th>workclass</th><th>fnlwgt</th><th>education</th><th>education-num</th>
+                    <th>marital-status</th><th>occupation</th><th>relationship</th><th>race</th>
+                    <th>sex</th><th>capital-gain</th><th>capital-loss</th><th>hours-per-week</th>
+                    <th>native-country</th><th>income</th>
+                </tr>
+                <tr><td>39</td><td>State-gov</td><td>77516</td><td>Bachelors</td><td>13</td><td>Never-married</td><td>Adm-clerical</td><td>Not-in-family</td><td>White</td><td>Male</td><td>2174</td><td>0</td><td>40</td><td>United-States</td><td>&lt;=50K</td></tr>
+                <tr><td>50</td><td>Self-emp-not-inc</td><td>83311</td><td>Bachelors</td><td>13</td><td>Married-civ-spouse</td><td>Exec-managerial</td><td>Husband</td><td>White</td><td>Male</td><td>0</td><td>0</td><td>13</td><td>United-States</td><td>&lt;=50K</td></tr>
+                <tr><td>38</td><td>Private</td><td>215646</td><td>HS-grad</td><td>9</td><td>Divorced</td><td>Handlers-cleaners</td><td>Not-in-family</td><td>White</td><td>Male</td><td>0</td><td>0</td><td>40</td><td>United-States</td><td>&lt;=50K</td></tr>
+            </table>
+
+            <h3>Unique Values per Column</h3>
+            <table>
+                <tr><th>Column</th><th>Unique Values</th></tr>
+                <tr><td>age</td><td>74</td></tr>
+                <tr><td>workclass</td><td>9</td></tr>
+                <tr><td>fnlwgt</td><td>28523</td></tr>
+                <tr><td>education</td><td>16</td></tr>
+                <tr><td>education-num</td><td>16</td></tr>
+                <tr><td>marital-status</td><td>7</td></tr>
+                <tr><td>occupation</td><td>15</td></tr>
+                <tr><td>relationship</td><td>6</td></tr>
+                <tr><td>race</td><td>5</td></tr>
+                <tr><td>sex</td><td>2</td></tr>
+                <tr><td>capital-gain</td><td>119</td></tr>
+                <tr><td>capital-loss</td><td>92</td></tr>
+                <tr><td>hours-per-week</td><td>94</td></tr>
+                <tr><td>native-country</td><td>42</td></tr>
+                <tr><td>income</td><td>2</td></tr>
+            </table>
+
+            <h3>Initial Observations</h3>
+            <ul>
+                <li>Age ranges from 17 to 90 years old.</li>
+                <li>Missing values and '?' found in workclass, occupation, and native-country.</li>
+                <li>16 education levels, 15 occupations, 5 races, 2 sexes.</li>
+            </ul>
+
+            <h3>Data Cleaning</h3>
+            <ul>
+                <li>29 duplicate records were removed.</li>
+                <li>Missing values in workclass, occupation, and native-country replaced with "Non-specific".</li>
+                <li>Rare categories in race, relationship, and native-country were grouped to reduce dimensionality.</li>
+                <li>The target variable income was standardized and encoded as binary.</li>
+            </ul>
+
+            <h3>Transformations</h3>
+            <ul>
+                <li><b>Education:</b> Grouped into Elementary, Secondary, Associate, etc.</li>
+                <li><b>Race:</b> Rare categories grouped as "Other".</li>
+                <li><b>Relationship:</b> "Husband" and "Wife" grouped as "Spouse".</li>
+                <li><b>Native-country:</b> All except "United-States" grouped as "Other".</li>
+            </ul>
+
+            <h3>Visualizations</h3>
+            <p>Histograms for numeric features and bar plots for categorical features were generated. Example:</p>
+            <img src="histogram_example.png" alt="Histogram Example" style="max-width:400px;">
+
+            <h3>Preprocessing</h3>
+            <ul>
+                <li>Numeric features: median imputation.</li>
+                <li>Skewed features: log-transform and standardization.</li>
+                <li>Categorical features: mode imputation and OneHotEncoding.</li>
+            </ul>
+
+            <h3>Processed Data</h3>
+            <ul>
+                <li>The processed dataset is saved at <code>data/processed/adult.data</code>.</li>
+                <li>Full notebook: <a href="../notebooks/EDA.ipynb">EDA.ipynb</a></li>
+            </ul>
         </section>
     </main>
     <footer>
