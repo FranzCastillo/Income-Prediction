@@ -260,7 +260,39 @@
         Predomina la Clase 0; sus métricas superan a las de la Clase 1. Esto sugiere sesgo del modelo con mayor certeza para Clase 0. La evaluación por grupo (edad, raza, sexo) muestra menos positivos predichos vs. la tasa real en mujeres y menores de 30; las AUC‑ROC son altas (>0.90) en todos los grupos, indicando que el umbral y las prevalencias impulsan las disparidades. La calibración por grupo o umbrales específicos podrían reducir brechas sin perder desempeño global.
       </p>
     </div>
-  </section>
+  
+
+
+<div class="from-docx">
+  <h3 class="lang-en">Observed Biases (from report)</h3>
+  <h3 class="lang-es">Sesgos observados (del informe)</h3>
+  <p class="lang-en">
+    <strong>Demographic:</strong> Gender imbalance (≈67% men vs 33% women); racial distribution skewed toward White (≈85%).
+  </p>
+  <p class="lang-es">
+    <strong>Demográficos:</strong> Desbalance de género (≈67% hombres vs 33% mujeres); distribución racial inclinada hacia población blanca (≈85%).
+  </p>
+  <p class="lang-en">
+    <strong>Socioeconomic:</strong> Geographic skew (&gt;80% United States); workclass concentrated in Private (~70%).
+  </p>
+  <p class="lang-es">
+    <strong>Socioeconómicos:</strong> Sesgo geográfico (&gt;80% Estados Unidos); predominio del sector privado (~70%).
+  </p>
+  <p class="lang-en">
+    <strong>Target variable:</strong> Income classes are imbalanced (≤50K &gt; &gt;50K), which initially biases metrics toward Class 0.
+  </p>
+  <p class="lang-es">
+    <strong>Variable objetivo:</strong> Clases de ingreso desbalanceadas (≤50K &gt; &gt;50K), sesgando inicialmente las métricas hacia la Clase 0.
+  </p>
+  <p class="lang-en">
+    Group-wise evaluation showed fewer predicted positives than actual rates across groups, more pronounced for women; ROC‑AUC &gt; 0.90 indicates that disparities are driven by thresholding and prevalence differences.
+  </p>
+  <p class="lang-es">
+    La evaluación por grupos mostró menos positivos predichos que la tasa real, más pronunciado en mujeres; AUC‑ROC &gt; 0.90 sugiere que las disparidades se deben al umbral y a diferencias de prevalencia.
+  </p>
+</div>
+
+</section>
 
   <section id="clustering" class="card">
     <h2>Clustering</h2>
@@ -316,7 +348,31 @@
         <p class="lang-es">Muy jóvenes (~23), pocas horas (~20.5), solteros con hijos.</p>
       </div>
     </div>
-  </section>
+  
+
+
+<div class="from-docx">
+  <h3 class="lang-en">Cluster Profiles (K‑Prototypes, k=6)</h3>
+  <h3 class="lang-es">Perfiles de clúster (K‑Prototypes, k=6)</h3>
+  <ul>
+    <li class="lang-en"><strong>C0:</strong> Middle‑aged, ~41 h/wk, married with spouse; typical private‑sector workers.</li>
+    <li class="lang-es"><strong>C0:</strong> Mediana edad, ~41 h/sem, casados con cónyuge; trabajadores del sector privado.</li>
+    <li class="lang-en"><strong>C1:</strong> Older adults, ~17 h/wk, married; part‑time or retirees.</li>
+    <li class="lang-es"><strong>C1:</strong> Adultos mayores, ~17 h/sem, casados; medio tiempo o jubilados.</li>
+    <li class="lang-en"><strong>C2:</strong> Young adults (~26), average hours, never married.</li>
+    <li class="lang-es"><strong>C2:</strong> Adultos jóvenes (~26), horas promedio, solteros.</li>
+    <li class="lang-en"><strong>C3:</strong> Mid‑to‑older (~57), average hours, married; similar to C0 but older.</li>
+    <li class="lang-es"><strong>C3:</strong> Mediana edad a mayores (~57), horas promedio, casados; similar a C0 pero mayores.</li>
+    <li class="lang-en"><strong>C4:</strong> Middle‑aged (~40), many hours (~64.5), married; work overload.</li>
+    <li class="lang-es"><strong>C4:</strong> Mediana edad (~40), muchas horas (~64.5), casados; sobrecarga laboral.</li>
+    <li class="lang-en"><strong>C5:</strong> Very young (~23), few hours (~20.5), never married with children.</li>
+    <li class="lang-es"><strong>C5:</strong> Muy jóvenes (~23), pocas horas (~20.5), solteros con hijos.</li>
+  </ul>
+  <p class="lang-en"><em>Key separation:</em> age and weekly hours; education and race contribute less to cluster differentiation.</p>
+  <p class="lang-es"><em>Claves de separación:</em> edad y horas por semana; educación y raza aportan menos a la diferenciación.</p>
+</div>
+
+</section>
 
   <section id="models" class="card">
     <h3 class="lang-en">Global vs Clustered XGBoost — Confusion-matrix comparison</h3>
@@ -412,7 +468,27 @@
         </tbody>
       </table>
     </div>
-  </section>
+  
+
+
+<div class="from-docx">
+  <h3 class="lang-en">Model Comparison — Narrative</h3>
+  <h3 class="lang-es">Comparación de modelos — Narrativa</h3>
+  <p class="lang-en">
+    The global XGBoost outperformed the aggregated best‑per‑cluster pipeline. Clustering fragmented the data into smaller, less representative subsets, increasing false negatives and lowering recall for &gt;50K.
+  </p>
+  <p class="lang-es">
+    El XGBoost global superó al agregado de mejores modelos por clúster. La fragmentación del conjunto produjo subconjuntos poco representativos, aumentando falsos negativos y reduciendo el recall para &gt;50K.
+  </p>
+  <p class="lang-en">
+    SHAP analyses show sustained reliance on proxy features (e.g., marital‑status and sex), sometimes amplified within clusters—indicating the mitigation approach reinforced existing biases.
+  </p>
+  <p class="lang-es">
+    Los análisis SHAP evidencian dependencia de atributos proxy (p. ej., estado civil y sexo), a veces amplificada dentro de clústeres—indicando que la mitigación reforzó sesgos existentes.
+  </p>
+</div>
+
+</section>
 
   <section id="shap" class="card">
     <h2 class="lang-en">Model Explainability — SHAP Values</h2>
@@ -487,7 +563,21 @@
         Insight clave: atributos como <em>age</em>, <em>relationship_Spouse</em>, <em>marital-status_Married-civ-spouse</em> y <em>hours-per-week</em> dominan las explicaciones globales; en varios clústeres, <em>sex_Male</em> se vuelve un impulsor positivo notable. Esto sugiere dependencia de proxies socioeconómicos; se recomienda calibración por grupo o entrenamiento con restricciones de equidad.
       </p>
     </div>
-  </section>
+  
+
+
+<div class="from-docx">
+  <h3 class="lang-en">SHAP Insights</h3>
+  <h3 class="lang-es">Hallazgos SHAP</h3>
+  <p class="lang-en">
+    Dominant drivers: <em>age</em>, <em>relationship_Spouse</em>, <em>marital-status_Married-civ-spouse</em>, <em>hours-per-week</em>. In several clusters, <em>sex_Male</em> becomes a notable positive driver, evidencing socioeconomic proxies and the need for group calibration or fairness‑constrained training.
+  </p>
+  <p class="lang-es">
+    Impulsores dominantes: <em>age</em>, <em>relationship_Spouse</em>, <em>marital-status_Married-civ-spouse</em>, <em>hours-per-week</em>. En varios clústeres, <em>sex_Male</em> es un impulsor positivo notable, evidenciando proxies socioeconómicos y la necesidad de calibración por grupo o entrenamiento con restricciones de equidad.
+  </p>
+</div>
+
+</section>
 
   <section id="conclusions" class="card">
     <h2 class="lang-en">Conclusions</h2>
@@ -500,5 +590,10 @@
       <li class="lang-es">- Las disparidades observadas se alinean con diferencias de prevalencia y un umbral único conservador. Se recomienda calibración o umbrales por grupo.</li>
       <br/>
       <li class="lang-en">- The project demonstrates that bias is a fundamental property of the underlying societal data, and technical approaches like clustering that use correlated features will inevitably reflect and harden those existing inequalities.</li>
+      <li class="lang-en">- The clustering strategy failed as a mitigation technique and, in some segments, amplified discrimination. Technical fixes alone are insufficient; bias originates from societal inequalities embedded in data.</li>
+      <li class="lang-es">- La estrategia de clustering falló como técnica de mitigación y, en algunos segmentos, amplificó la discriminación. Las soluciones técnicas por sí solas son insuficientes; el sesgo proviene de desigualdades sociales embebidas en los datos.</li>
+      <br/>
+      <li class="lang-en">- Effective debiasing requires: (1) proxy‑feature audits and preprocessing, (2) fairness‑aware training (constraints/adversarial debiasing), and (3) post‑processing threshold calibration by group.</li>
+      <li class="lang-es">- La mitigación efectiva requiere: (1) auditorías de proxies y preprocesamiento, (2) entrenamiento con conciencia de equidad (restricciones/debiasing adversarial) y (3) calibración de umbrales por grupo en post‑proceso.</li>
     </ul>
-  </section>
+</section>
