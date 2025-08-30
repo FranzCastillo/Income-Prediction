@@ -35,6 +35,7 @@
       <a href="#bias">Bias & Fairness</a>
       <a href="#clustering">Clustering</a>
       <a href="#models">Models</a>
+      <a href="#shap">SHAP</a>
       <a href="#conclusions">Conclusions</a>
     </nav>
 
@@ -46,7 +47,6 @@
 </header>
 
 <main class="container">
-  <!-- Overview -->
   <section id="overview" class="card">
     <h1 class="lang-en">Identification and Mitigation of Bias in Machine Learning Models</h1>
     <h1 class="lang-es">Identificación y Mitigación de Sesgos en Modelos de Machine Learning</h1>
@@ -70,7 +70,6 @@
     </figure>
   </section>
 
-  <!-- EDA -->
   <section id="eda" class="card">
     <h2 class="lang-en">Exploratory Data Analysis (EDA)</h2>
     <h2 class="lang-es">Análisis Exploratorio de Datos (EDA)</h2>
@@ -136,14 +135,28 @@
       </div>
     </div>
 
-    <figure class="figure">
-      <img src="images/figure2_overview.png" alt="Figure 2 — Post-transform summary of variables" />
-      <figcaption class="lang-en">Figure 2. Second graphical summary of variables (after transformations).</figcaption>
-      <figcaption class="lang-es">Figura 2. Segundo resumen gráfico de las variables (post‑transformaciones).</figcaption>
-    </figure>
   </section>
 
-  <!-- Cleaning -->
+  <section class="eda-section">
+    <h3 class="lang-en">Preprocessing Pipelines</h3>
+    <ul>
+      <li><b>numeric_transformer:</b> Missing values are filled with the column median.</li>
+      <li><b>log_transformer:</b>
+        <ol>
+          <li>Missing values are filled with the median.</li>
+          <li>The natural logarithm + 1 is applied to the data.</li>
+          <li>Standardization is applied after the log transformation.</li>
+        </ol>
+      </li>
+      <li><b>categorical_transformer:</b>
+        <ol>
+          <li>Missing values are filled with the mode.</li>
+          <li>Categories are converted into dummy columns for robustness.</li>
+        </ol>
+      </li>
+    </ul>
+  </section>
+
   <section id="cleaning" class="card">
     <h2 class="lang-en">Data Cleaning</h2>
     <h2 class="lang-es">Limpieza de Datos</h2>
@@ -155,7 +168,6 @@
     </ul>
   </section>
 
-  <!-- Transforms -->
   <section id="transforms" class="card">
     <h2 class="lang-en">Transformations</h2>
     <h2 class="lang-es">Transformaciones</h2>
@@ -213,9 +225,15 @@
           <figcaption class="lang-es">Transformación de country: agrupación de países no US.</figcaption>
         </figure>
       </div>
+    </div>
+
+     <figure class="figure">
+      <img src="images/figure2_overview.png" alt="Figure 2 — Post-transform summary of variables" />
+      <figcaption class="lang-en">Figure 2. Second graphical summary of variables (after transformations).</figcaption>
+      <figcaption class="lang-es">Figura 2. Segundo resumen gráfico de las variables (post‑transformaciones).</figcaption>
+    </figure>
   </section>
 
-  <!-- Bias & Fairness -->
   <section id="bias" class="card">
     <h2 class="lang-en">Bias Identification & Fairness Evaluation</h2>
     <h2 class="lang-es">Identificación de Sesgos & Evaluación de Equidad</h2>
@@ -244,7 +262,6 @@
     </div>
   </section>
 
-  <!-- Clustering -->
   <section id="clustering" class="card">
     <h2>Clustering</h2>
 
@@ -301,7 +318,6 @@
     </div>
   </section>
 
-  <!-- Models -->
   <section id="models" class="card">
     <h3 class="lang-en">Global vs Clustered XGBoost — Confusion-matrix comparison</h3>
     <h3 class="lang-es">XGBoost global vs por clúster — Comparación de matrices</h3>
@@ -398,6 +414,81 @@
     </div>
   </section>
 
+  <section id="shap" class="card">
+    <h2 class="lang-en">Model Explainability — SHAP Values</h2>
+    <h2 class="lang-es">Explicabilidad del modelo — Valores SHAP</h2>
+
+    <p class="lang-en muted">
+      Global and per‑cluster SHAP analyses highlight the strongest drivers for income predictions, and reveal where proxy features may introduce bias.
+    </p>
+    <p class="lang-es muted">
+      Los análisis SHAP global y por clúster muestran los impulsores más fuertes de las predicciones de ingresos y revelan dónde los atributos proxy pueden introducir sesgo.
+    </p>
+
+    <h3 class="lang-en">Global Model (XGBoost)</h3>
+    <h3 class="lang-es">Modelo global (XGBoost)</h3>
+
+    <div class="grid-3">
+      <div class="mini-card">
+        <h4>Cluster 0</h4>
+        <figure class="figure">
+          <img src="images/shap_0.png" alt="SHAP values for Cluster 0" />
+          <figcaption class="lang-en">Annex — Plot 2. SHAP for best model on Cluster 0.</figcaption>
+          <figcaption class="lang-es">Anexo — Gráfico 2. SHAP del mejor modelo en el Clúster 0.</figcaption>
+        </figure>
+      </div>
+      <div class="mini-card">
+        <h4>Cluster 1</h4>
+        <figure class="figure">
+          <img src="images/shap_1.png" alt="SHAP values for Cluster 1" />
+          <figcaption class="lang-en">Annex — Plot 3. SHAP for best model on Cluster 1.</figcaption>
+          <figcaption class="lang-es">Anexo — Gráfico 3. SHAP del mejor modelo en el Clúster 1.</figcaption>
+        </figure>
+      </div>
+      <div class="mini-card">
+        <h4>Cluster 2</h4>
+        <figure class="figure">
+          <img src="images/shap_2.png" alt="SHAP values for Cluster 2" />
+          <figcaption class="lang-en">Annex — Plot 4. SHAP for best model on Cluster 2.</figcaption>
+          <figcaption class="lang-es">Anexo — Gráfico 4. SHAP del mejor modelo en el Clúster 2.</figcaption>
+        </figure>
+      </div>
+      <div class="mini-card">
+        <h4>Cluster 3</h4>
+        <figure class="figure">
+          <img src="images/shap_3.png" alt="SHAP values for Cluster 3" />
+          <figcaption class="lang-en">Annex — Plot 5. SHAP for best model on Cluster 3.</figcaption>
+          <figcaption class="lang-es">Anexo — Gráfico 5. SHAP del mejor modelo en el Clúster 3.</figcaption>
+        </figure>
+      </div>
+      <div class="mini-card">
+        <h4>Cluster 4</h4>
+        <figure class="figure">
+          <img src="images/shap_4.png" alt="SHAP values for Cluster 4" />
+          <figcaption class="lang-en">Annex — Plot 6. SHAP for best model on Cluster 4.</figcaption>
+          <figcaption class="lang-es">Anexo — Gráfico 6. SHAP del mejor modelo en el Clúster 4.</figcaption>
+        </figure>
+      </div>
+      <div class="mini-card">
+        <h4>Cluster 5</h4>
+        <figure class="figure">
+          <img src="images/shap_5.png" alt="SHAP values for Cluster 5" />
+          <figcaption class="lang-en">Annex — Plot 7. SHAP for best model on Cluster 5.</figcaption>
+          <figcaption class="lang-es">Anexo — Gráfico 7. SHAP del mejor modelo en el Clúster 5.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p class="lang-en">
+        Key insight: features like <em>age</em>, <em>relationship_Spouse</em>, <em>marital-status_Married-civ-spouse</em> and <em>hours-per-week</em> dominate global explanations; within several clusters, <em>sex_Male</em> becomes a notable positive driver. This indicates reliance on socioeconomic proxies; per‑group calibration or fairness‑constrained training is recommended.
+      </p>
+      <p class="lang-es">
+        Insight clave: atributos como <em>age</em>, <em>relationship_Spouse</em>, <em>marital-status_Married-civ-spouse</em> y <em>hours-per-week</em> dominan las explicaciones globales; en varios clústeres, <em>sex_Male</em> se vuelve un impulsor positivo notable. Esto sugiere dependencia de proxies socioeconómicos; se recomienda calibración por grupo o entrenamiento con restricciones de equidad.
+      </p>
+    </div>
+  </section>
+
   <section id="conclusions" class="card">
     <h2 class="lang-en">Conclusions</h2>
     <h2 class="lang-es">Conclusiones</h2>
@@ -408,5 +499,6 @@
       <li class="lang-en">- Observed disparities are consistent with prevalence differences and a single conservative threshold. Group‑wise calibration or thresholding is a recommended next step.</li>
       <li class="lang-es">- Las disparidades observadas se alinean con diferencias de prevalencia y un umbral único conservador. Se recomienda calibración o umbrales por grupo.</li>
       <br/>
+      <li class="lang-en">- The project demonstrates that bias is a fundamental property of the underlying societal data, and technical approaches like clustering that use correlated features will inevitably reflect and harden those existing inequalities.</li>
     </ul>
   </section>
